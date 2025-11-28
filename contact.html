@@ -214,25 +214,68 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-white py-12 border-t border-gray-200">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="max-w-2xl mx-auto">
-                <img src="logo.png" alt="MyQuro Logo" class="h-10 mx-auto mb-6">
-                <h3 class="text-xl font-bold text-[#1F1F1F] mb-4">Contact Information</h3>
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 mb-8">
-                    <a href="mailto:info.myquro@gmail.com" class="flex items-center gap-2 text-gray-600 hover:text-[#D32F2F] transition-colors">
-                        <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-[#D32F2F]"><i class="fas fa-envelope text-sm"></i></div>
-                        <span class="font-medium">info.myquro@gmail.com</span>
-                    </a>
-                    <a href="tel:+917061903429" class="flex items-center gap-2 text-gray-600 hover:text-[#D32F2F] transition-colors">
-                        <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-[#D32F2F]"><i class="fas fa-phone-alt text-sm"></i></div>
-                        <span class="font-medium">+91 70619 03429</span>
-                    </a>
+    <!-- Footer (updated: dark blue + social links + Bokaro location) -->
+    <footer class="bg-gradient-to-b from-[#03102a] to-[#071830] text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                <!-- Brand / Socials -->
+                <div class="text-center md:text-left">
+                    <img src="logo.png" alt="MyQuro Logo" class="h-10 mx-auto md:mx-0 mb-4">
+                    <p class="text-sm text-white/90 max-w-sm mb-4">
+                        Empowering restaurants with next‑gen digital tools. Streamline operations, boost revenue, and delight customers with MyQuro.
+                    </p>
+                    <div class="flex items-center justify-center md:justify-start gap-3">
+                        <a href="https://www.instagram.com/myquro12?igsh=cjZyeWw5bTd6d3Zk" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://x.com/my_quro12" target="_blank" rel="noopener" aria-label="X / Twitter" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1aR3Ve9Dj2/" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/109372091/admin/dashboard/" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="text-sm text-gray-500"><span class="font-semibold text-[#1F1F1F]">Company:</span> MyQuro</div>
+
+                <!-- Quick Links -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:underline">Home</a></li>
+                        <li><a href="aboutus.html" class="hover:underline">About Us</a></li>
+                        <li><a href="contact.html" class="hover:underline">Contact</a></li>
+                        <li><a href="terms.html" class="hover:underline">Terms</a></li>
+                        <li><a href="privacy.html" class="hover:underline">Privacy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="text-center md:text-left">
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="text-sm font-medium">Location</p>
+                            <p class="text-sm text-white/90">Bokaro, Jharkhand, India</p>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium">Email</p>
+                            <a href="mailto:info.myquro@gmail.com" class="text-sm text-white/90 hover:underline">info.myquro@gmail.com</a>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium">Phone</p>
+                            <a href="tel:+917061903429" class="text-sm text-white/90 hover:underline">+91 70619 03429</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mt-12 pt-8 border-t border-gray-100 text-sm text-gray-400">&copy; 2025 MyQuro. All rights reserved.</div>
+
+            <div class="mt-10 pt-8 border-t border-white/10 text-center text-sm text-white/70">
+                <div class="mb-2">&copy; 2025 MyQuro. All rights reserved.</div>
+                <div>Made with <span class="text-[#D32F2F]">♥</span> in India</div>
+            </div>
         </div>
     </footer>
 
