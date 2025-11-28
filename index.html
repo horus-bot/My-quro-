@@ -232,7 +232,7 @@
         .table-1 .avatar-pop { animation: occupy 4s infinite; }
         .table-2 .avatar-pop { animation: occupy 4s infinite 1s; }
         .table-3 .avatar-pop { animation: occupy 4s infinite 2s; }
-        
+
         .table-1 { animation: border-color-change 4s infinite; }
         .table-2 { animation: border-color-change 4s infinite 1s; }
         .table-3 { animation: border-color-change 4s infinite 2s; }
@@ -266,6 +266,24 @@
         @keyframes drive-route { 0% { left: 20px; } 60% { left: calc(100% - 50px); } 80% { left: calc(100% - 50px); } 100% { left: 20px; } }
         @keyframes trail-grow { 0% { width: 0; } 60% { width: calc(100% - 70px); } 80% { width: calc(100% - 70px); opacity: 1; } 100% { width: 0; opacity: 0; } }
         @keyframes marker-bounce { 0%, 50% { transform: translateY(-50%); opacity: 0.5; } 60%, 70% { transform: translateY(-65%); opacity: 1; } 80% { transform: translateY(-50%); } }
+
+        /* Footer Gradient */
+        .footer-gradient {
+            background: linear-gradient(135deg, #02040F 0%, #0F172A 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(211, 47, 47, 0.15) 0%, transparent 70%);
+            top: -300px;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
 
     </style>
 </head>
@@ -584,33 +602,78 @@
         </section>
 
         <!-- FOOTER SECTION -->
-        <footer class="bg-white py-12 border-t border-gray-200">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <div class="max-w-2xl mx-auto">
-                    <img src="logo.png" alt="MyQuro Logo" class="h-10 mx-auto mb-6">
-                    <h3 class="text-xl font-bold text-[#1F1F1F] mb-4">Contact Information</h3>
-                    <p class="text-gray-600 mb-6">If you have questions or concerns about these Terms & Conditions, you may contact us at:</p>
-                    
-                    <!-- Footer Contact Button -->
-                    <div class="mb-8">
-                        <a href="contact.html" class="inline-flex items-center text-[#D32F2F] font-semibold hover:text-[#B71C1C] transition-colors border-b-2 border-[#D32F2F] hover:border-[#B71C1C] pb-0.5">
-                            Visit Contact Page <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-                        </a>
+        <footer class="footer-gradient py-16 border-t border-white/10 relative">
+            <div class="footer-glow"></div>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                    <!-- Brand Column -->
+                    <div class="md:col-span-5 text-center md:text-left">
+                        <img src="logo.png" alt="MyQuro Logo" class="h-12 mb-6 mx-auto md:mx-0 brightness-0 invert opacity-90">
+                        <p class="text-purple-200/80 mb-8 leading-relaxed max-w-md mx-auto md:mx-0">
+                            Empowering restaurants with next-gen digital tools. Streamline operations, boost revenue, and delight customers with MyQuro.
+                        </p>
+                        <div class="flex justify-center md:justify-start gap-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#D32F2F] hover:scale-110 transition-all duration-300"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#D32F2F] hover:scale-110 transition-all duration-300"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-[#D32F2F] hover:scale-110 transition-all duration-300"><i class="fab fa-twitter"></i></a>
+                        </div>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 mb-8">
-                        <a href="mailto:info.myquro@gmail.com" class="flex items-center gap-2 text-gray-600 hover:text-[#D32F2F] transition-colors">
-                            <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-[#D32F2F]"><i class="fas fa-envelope text-sm"></i></div>
-                            <span class="font-medium">info.myquro@gmail.com</span>
-                        </a>
-                        <a href="tel:+917061903429" class="flex items-center gap-2 text-gray-600 hover:text-[#D32F2F] transition-colors">
-                            <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-[#D32F2F]"><i class="fas fa-phone-alt text-sm"></i></div>
-                            <span class="font-medium">+91 70619 03429</span>
-                        </a>
+                    <!-- Quick Links -->
+                    <div class="md:col-span-3 text-center md:text-left">
+                        <h3 class="text-lg font-bold text-white mb-6">Quick Links</h3>
+                        <ul class="space-y-4">
+                            <li><a href="index.html" class="text-purple-200/70 hover:text-white transition-colors hover:translate-x-1 inline-block">Home</a></li>
+                            <li><a href="aboutus.html" class="text-purple-200/70 hover:text-white transition-colors hover:translate-x-1 inline-block">About Us</a></li>
+                            <li><a href="contact.html" class="text-purple-200/70 hover:text-white transition-colors hover:translate-x-1 inline-block">Contact</a></li>
+                            <li><a href="terms.html" class="text-purple-200/70 hover:text-white transition-colors hover:translate-x-1 inline-block">Terms & Conditions</a></li>
+                            <li><a href="privacy.html" class="text-purple-200/70 hover:text-white transition-colors hover:translate-x-1 inline-block">Privacy Policy</a></li>
+                        </ul>
                     </div>
-                    <div class="text-sm text-gray-500"><span class="font-semibold text-[#1F1F1F]">Company:</span> MyQuro</div>
+
+                    <!-- Contact Info -->
+                    <div class="md:col-span-4 text-center md:text-left">
+                        <h3 class="text-lg font-bold text-white mb-6">Get in Touch</h3>
+                        <div class="space-y-6">
+                            <div class="flex flex-col md:flex-row items-center md:items-start gap-4 group">
+                                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-[#D32F2F] group-hover:bg-white/10 transition-colors shrink-0">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-medium mb-1">Location</p>
+                                    <p class="text-purple-200/70 text-sm">Bokaro, Jharkhand, India</p>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col md:flex-row items-center md:items-start gap-4 group">
+                                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-[#D32F2F] group-hover:bg-white/10 transition-colors shrink-0">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-medium mb-1">Email Us</p>
+                                    <a href="mailto:info.myquro@gmail.com" class="text-purple-200/70 text-sm hover:text-white transition-colors">info.myquro@gmail.com</a>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col md:flex-row items-center md:items-start gap-4 group">
+                                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-[#D32F2F] group-hover:bg-white/10 transition-colors shrink-0">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-medium mb-1">Call Us</p>
+                                    <a href="tel:+917061903429" class="text-purple-200/70 text-sm hover:text-white transition-colors">+91 70619 03429</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mt-12 pt-8 border-t border-gray-100 text-sm text-gray-400">&copy; 2025 MyQuro. All rights reserved.</div>
+
+                <div class="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-purple-200/50 text-sm">&copy; 2025 MyQuro. All rights reserved.</p>
+                    <p class="text-purple-200/50 text-sm flex items-center gap-2">
+                         
+                    </p>
+                </div>
             </div>
         </footer>
     </div>
