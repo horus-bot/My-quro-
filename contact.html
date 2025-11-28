@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - MyQuro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F5F6F7; color: #1F1F1F; }
+        
+        /* Custom Input Styling */
+        .input-group { position: relative; margin-bottom: 1.5rem; }
+        .form-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        .form-input:focus {
+            background: #FFFFFF;
+            border-color: #D32F2F;
+            box-shadow: 0 0 0 4px rgba(211, 47, 47, 0.1);
+        }
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9CA3AF;
+            transition: color 0.3s ease;
+        }
+        .form-input:focus + .input-icon { color: #D32F2F; }
+        
+        /* Selection Card Styling */
+        .type-card {
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .type-card:hover { transform: translateY(-4px); }
+        .type-card.selected {
+            border-color: #D32F2F;
+            background-color: #FEF2F2;
+            box-shadow: 0 10px 25px rgba(211, 47, 47, 0.15);
+        }
+        .type-card.selected .check-circle {
+            background-color: #D32F2F;
+            border-color: #D32F2F;
+            color: white;
+        }
+
+        /* Animations */
+        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hidden-form { display: none; opacity: 0; transition: opacity 0.5s ease; }
+        .visible-form { display: block; animation: fadeIn 0.5s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Modal */
+        .modal-backdrop {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md fixed w-full z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <img src="logo.png" alt="MyQuro" class="h-10 w-auto"> 
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-600 hover:text-[#D32F2F] font-medium transition-colors">Home</a>
+                    <a href="terms.html" class="text-gray-600 hover:text-[#D32F2F] font-medium transition-colors">Terms</a>
+                    <a href="privacy.html" class="text-gray-600 hover:text-[#D32F2F] font-medium transition-colors">Privacy</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-32 pb-20 min-h-screen flex flex-col justify-center">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12 fade-in-up">
+                <p class="text-[#D32F2F] font-bold tracking-wide uppercase text-sm mb-3">Get in Touch</p>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-[#1F1F1F] mb-6">How can we help you?</h1>
+                <p class="text-gray-600 text-lg">Select your role below so we can direct your inquiry to the right team.</p>
+            </div>
+
+            <!-- Step 1: User Type Selection -->
+            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12 fade-in-up" style="animation-delay: 0.2s;">
+                
+                <!-- Option 1: Restaurant Partner -->
+                <div class="type-card bg-white p-8 rounded-2xl border-2 border-gray-100 shadow-sm relative group" onclick="selectType('restaurant')">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center text-[#D32F2F] text-xl group-hover:scale-110 transition-transform">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <div class="check-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center transition-colors">
+                            <i class="fas fa-check text-xs"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Restaurant Partner</h3>
+                    <p class="text-gray-500 text-sm">I own or manage a restaurant and want to join MyQuro.</p>
+                </div>
+
+                <!-- Option 2: Customer -->
+                <div class="type-card bg-white p-8 rounded-2xl border-2 border-gray-100 shadow-sm relative group" onclick="selectType('customer')">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 text-xl group-hover:scale-110 transition-transform">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="check-circle w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center transition-colors">
+                            <i class="fas fa-check text-xs"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Customer</h3>
+                    <p class="text-gray-500 text-sm">I have a general question, feedback, or support issue.</p>
+                </div>
+            </div>
+
+            <!-- Step 2: Forms Container -->
+            <div id="formContainer" class="max-w-2xl mx-auto bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden hidden-form">
+                
+                <!-- RESTAURANT FORM -->
+                <form id="restaurantForm" class="p-8 md:p-12 hidden" onsubmit="handleRestaurantSubmit(event)">
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900">Partner Application</h2>
+                        <p class="text-gray-500 text-sm mt-1">Fill in your restaurant details below.</p>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" class="form-input" placeholder="Restaurant Name" required>
+                        <i class="fas fa-utensils input-icon"></i>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" class="form-input" placeholder="Owner / User Full Name" required>
+                        <i class="fas fa-user-tie input-icon"></i>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="input-group">
+                            <input type="tel" class="form-input" placeholder="Contact Number" required>
+                            <i class="fas fa-phone input-icon"></i>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" class="form-input" placeholder="Email Address (Optional)">
+                            <i class="fas fa-envelope input-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="url" class="form-input" placeholder="Social Media Link (Optional)">
+                        <i class="fab fa-instagram input-icon"></i>
+                    </div>
+
+                    <div class="input-group">
+                        <textarea class="form-input h-32 pt-4" placeholder="Tell us about your request..." required style="resize: none;"></textarea>
+                        <i class="fas fa-comment-alt input-icon" style="top: 1.5rem; transform: none;"></i>
+                    </div>
+
+                    <button type="submit" class="w-full bg-[#D32F2F] text-white font-bold py-4 rounded-xl hover:bg-[#B71C1C] transition-all transform hover:-translate-y-1 shadow-lg shadow-red-500/30 flex items-center justify-center gap-2">
+                        <span>Submit Application</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+
+                <!-- CUSTOMER FORM -->
+                <form id="customerForm" class="p-8 md:p-12 hidden" onsubmit="handleCustomerSubmit(event)">
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900">Customer Support</h2>
+                        <p class="text-gray-500 text-sm mt-1">How can we help you today?</p>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" class="form-input" placeholder="Full Name" required>
+                        <i class="fas fa-user input-icon"></i>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" class="form-input" placeholder="Contact Number or Email" required>
+                        <i class="fas fa-address-card input-icon"></i>
+                    </div>
+
+                    <div class="input-group">
+                        <textarea class="form-input h-32 pt-4" placeholder="Type your message or inquiry here..." required style="resize: none;"></textarea>
+                        <i class="fas fa-comment-alt input-icon" style="top: 1.5rem; transform: none;"></i>
+                    </div>
+
+                    <button type="submit" class="w-full bg-[#1F1F1F] text-white font-bold py-4 rounded-xl hover:bg-black transition-all transform hover:-translate-y-1 shadow-lg flex items-center justify-center gap-2">
+                        <span>Submit Query</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white py-12 border-t border-gray-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="max-w-2xl mx-auto">
+                <img src="logo.png" alt="MyQuro Logo" class="h-10 mx-auto mb-6">
+                <h3 class="text-xl font-bold text-[#1F1F1F] mb-4">Contact Information</h3>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 mb-8">
+                    <a href="mailto:info.myquro@gmail.com" class="flex items-center gap-2 text-gray-600 hover:text-[#D32F2F] transition-colors">
+                        <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-[#D32F2F]"><i class="fas fa-envelope text-sm"></i></div>
+                        <span class="font-medium">info.myquro@gmail.com</span>
+                    </a>
+                    <a href="tel:+917061903429" class="flex items-center gap-2 text-gray-600 hover:text-[#D32F2F] transition-colors">
+                        <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-[#D32F2F]"><i class="fas fa-phone-alt text-sm"></i></div>
+                        <span class="font-medium">+91 70619 03429</span>
+                    </a>
+                </div>
+                <div class="text-sm text-gray-500"><span class="font-semibold text-[#1F1F1F]">Company:</span> MyQuro</div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-100 text-sm text-gray-400">&copy; 2025 MyQuro. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 z-[100] hidden">
+        <div class="modal-backdrop absolute inset-0 transition-opacity opacity-0" id="modalBackdrop"></div>
+        <div class="flex items-center justify-center min-h-screen px-4">
+            <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full relative transform scale-90 opacity-0 transition-all duration-300" id="modalContent">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check text-2xl text-green-600"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-center text-gray-900 mb-2">Thank You!</h3>
+                <p class="text-center text-gray-500 mb-6">Our team has received your message and will contact you shortly.</p>
+                <button onclick="closeModal()" class="w-full bg-gray-900 text-white font-bold py-3 rounded-xl hover:bg-black transition-colors">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const formContainer = document.getElementById('formContainer');
+        const restaurantForm = document.getElementById('restaurantForm');
+        const customerForm = document.getElementById('customerForm');
+        const cards = document.querySelectorAll('.type-card');
+
+        function selectType(type) {
+            // Update Card Styles
+            cards.forEach(card => card.classList.remove('selected'));
+            if(type === 'restaurant') cards[0].classList.add('selected');
+            else cards[1].classList.add('selected');
+
+            // Show Container
+            formContainer.classList.remove('hidden-form');
+            formContainer.classList.add('visible-form');
+
+            // Toggle Forms
+            if (type === 'restaurant') {
+                restaurantForm.classList.remove('hidden');
+                customerForm.classList.add('hidden');
+            } else {
+                customerForm.classList.remove('hidden');
+                restaurantForm.classList.add('hidden');
+            }
+
+            // Smooth Scroll
+            setTimeout(() => {
+                formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        }
+
+        function showModal() {
+            const modal = document.getElementById('successModal');
+            const backdrop = document.getElementById('modalBackdrop');
+            const content = document.getElementById('modalContent');
+            
+            modal.classList.remove('hidden');
+            // Trigger reflow
+            void modal.offsetWidth;
+            
+            backdrop.classList.remove('opacity-0');
+            content.classList.remove('scale-90', 'opacity-0');
+            content.classList.add('scale-100', 'opacity-100');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('successModal');
+            const backdrop = document.getElementById('modalBackdrop');
+            const content = document.getElementById('modalContent');
+            
+            backdrop.classList.add('opacity-0');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-90', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                // Reset forms
+                restaurantForm.reset();
+                customerForm.reset();
+                // Hide container
+                formContainer.classList.add('hidden-form');
+                formContainer.classList.remove('visible-form');
+                cards.forEach(card => card.classList.remove('selected'));
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 300);
+        }
+
+        function handleRestaurantSubmit(e) {
+            e.preventDefault();
+            // Here you would normally send data to backend
+            showModal();
+        }
+
+        function handleCustomerSubmit(e) {
+            e.preventDefault();
+            // Here you would normally send data to backend
+            showModal();
+        }
+    </script>
+</body>
+</html>

@@ -303,6 +303,11 @@
                 <i class="fas fa-user-shield text-gray-400 group-hover:text-[#D32F2F] transition-colors text-[10px] sm:text-sm"></i>
                 <span class="text-gray-600 font-medium text-[10px] sm:text-sm group-hover:text-[#D32F2F] transition-colors whitespace-nowrap">Privacy</span>
             </a>
+            <!-- Contact Button -->
+            <a href="contact.html" class="group flex items-center gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full shadow-sm hover:shadow-md hover:border-red-200 hover:-translate-y-0.5 transition-all duration-300">
+                <i class="fas fa-envelope text-gray-400 group-hover:text-[#D32F2F] transition-colors text-[10px] sm:text-sm"></i>
+                <span class="text-gray-600 font-medium text-[10px] sm:text-sm group-hover:text-[#D32F2F] transition-colors whitespace-nowrap">Contact Us</span>
+            </a>
         </div>
 
         <!-- HERO SECTION -->
@@ -333,6 +338,14 @@
                             <span class="countdown-dot text-[#D32F2F] text-xl">●</span>
                         </div>
                     </div>
+
+                    <!-- Hero Contact Button -->
+                    <div class="description-entrance" style="animation-delay: 1.6s;">
+                        <a href="contact.html" class="inline-flex items-center justify-center px-8 py-3 text-base font-bold text-white transition-all duration-200 bg-[#D32F2F] border border-transparent rounded-full hover:bg-[#B71C1C] hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600">
+                            Contact Us
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
                 </div>
                 <div class="relative illustration-float image-entrance order-1 lg:order-2">
                     <div class="relative z-10">
@@ -346,12 +359,14 @@
         </section>
 
         <!-- FEATURES SECTION -->
-        <section class="relative py-20 overflow-hidden" style="background-color: #F5F6F7;">
+        <section id="features" class="relative py-20 overflow-hidden" style="background-color: #F5F6F7;">
             <div class="absolute top-0 left-0 w-full h-1 bg-[#D32F2F]"></div>
+
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 gap-8">
+                <!-- Header -->
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 gap-8">
                     <div class="max-w-2xl">
-                        <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-white border border-red-200 mb-6 shadow-sm">
+                        <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-white border border-red-200 mb-4 shadow-sm">
                             <span class="w-2 h-2 rounded-full bg-[#D32F2F] mr-2 animate-pulse"></span>
                             <span class="text-[#D32F2F] text-xs font-bold uppercase tracking-wide">Powerful Features</span>
                         </div>
@@ -367,107 +382,111 @@
                     </div>
                 </div>
 
-                <!-- NEW INTENSE ANIMATION GRID -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <!-- Card 1: Mobile-First Ordering -->
-                    <div class="feature-card group">
-                        <div class="scene-stage">
-                            <div class="phone-frame">
-                                <div class="phone-notch"></div>
-                                <div class="menu-list">
-                                    <div class="menu-item"><div class="menu-img"></div><div class="menu-line"></div><div class="menu-btn"></div></div>
-                                    <div class="menu-item"><div class="menu-img"></div><div class="menu-line"></div><div class="menu-btn"></div></div>
-                                    <div class="menu-item"><div class="menu-img"></div><div class="menu-line"></div><div class="menu-btn"></div></div>
-                                </div>
-                                <div class="cart-notif">1</div>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-[#1F1F1F] mb-2 group-hover:text-[#D32F2F] transition-colors">Mobile-First Ordering</h3>
-                        <p class="text-[#686868] text-sm leading-relaxed">Seamless digital menus and instant ordering from any device. No app download required.</p>
-                    </div>
-
-                    <!-- Card 2: Lightning Fast Setup -->
-                    <div class="feature-card group">
-                        <div class="scene-stage">
-                            <div class="setup-grid">
-                                <div class="grid-slot"><div class="widget-block widget-1"><i class="fas fa-utensils widget-icon"></i></div></div>
-                                <div class="grid-slot"><div class="widget-block widget-2"><i class="fas fa-users widget-icon"></i></div></div>
-                                <div class="grid-slot"><div class="widget-block widget-3"><i class="fas fa-chart-bar widget-icon"></i></div></div>
-                                <div class="grid-slot"><div class="widget-block widget-4"><i class="fas fa-cog widget-icon"></i></div></div>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-[#1F1F1F] mb-2 group-hover:text-[#D32F2F] transition-colors">Lightning Fast Setup</h3>
-                        <p class="text-[#686868] text-sm leading-relaxed">Drag, drop, and go. Set up your entire restaurant profile and menu in minutes.</p>
-                    </div>
-
-                    <!-- Card 3: Advanced Analytics -->
-                    <div class="feature-card group">
-                        <div class="scene-stage">
-                            <div class="graph-container">
-                                <div class="trend-line">
-                                    <svg class="trend-svg" width="100%" height="100%" viewBox="0 0 300 100" preserveAspectRatio="none">
-                                        <path d="M0,100 C50,80 100,20 150,50 C200,80 250,10 300,30" />
-                                    </svg>
-                                </div>
-                                <div class="bar-col"><div class="bar-fill"></div></div>
-                                <div class="bar-col"><div class="bar-fill"></div></div>
-                                <div class="bar-col"><div class="bar-fill"></div></div>
-                                <div class="bar-col"><div class="bar-fill"></div></div>
-                                <div class="bar-col"><div class="bar-fill"></div></div>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-[#1F1F1F] mb-2 group-hover:text-[#D32F2F] transition-colors">Advanced Analytics</h3>
-                        <p class="text-[#686868] text-sm leading-relaxed">Real-time insights into sales, peak hours, and customer preferences to grow smarter.</p>
-                    </div>
-
-                    <!-- Card 4: Secure Payment -->
-                    <div class="feature-card group">
-                        <div class="scene-stage">
-                            <div class="card-plastic"><div class="card-chip"></div></div>
-                            <div class="scanner-zone"><div class="scan-light"></div></div>
-                            <i class="fas fa-shield-alt shield-icon"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-[#1F1F1F] mb-2 group-hover:text-[#D32F2F] transition-colors">Secure Payment</h3>
-                        <p class="text-[#686868] text-sm leading-relaxed">Integrated, encrypted payment processing for fast and secure transactions.</p>
-                    </div>
-
-                    <!-- Card 5: Table Reservation -->
-                    <div class="feature-card group">
-                        <div class="scene-stage">
-                            <div class="floor-plan">
-                                <div class="table-round table-1">
-                                    <div class="chair c-top"></div><div class="chair c-right"></div><div class="chair c-bottom"></div><div class="chair c-left"></div>
-                                    <div class="avatar-pop">OM</div>
-                                </div>
-                                <div class="table-round table-2">
-                                    <div class="chair c-top"></div><div class="chair c-right"></div><div class="chair c-bottom"></div><div class="chair c-left"></div>
-                                    <div class="avatar-pop">JD</div>
-                                </div>
-                                <div class="table-round table-3">
-                                    <div class="chair c-top"></div><div class="chair c-right"></div><div class="chair c-bottom"></div><div class="chair c-left"></div>
-                                    <div class="avatar-pop">AK</div>
+                <!-- Features Grid: 3 on first row, 2 centered on second row -->
+                <div class="features-wrapper">
+                    <!-- Row 1: three cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Feature: Mobile-First Ordering -->
+                        <article class="feature-card group" role="listitem" data-feature="ordering" aria-labelledby="feat-ordering-title">
+                            <div class="feature-media scene-stage" aria-hidden="true">
+                                <div class="phone-frame" aria-hidden="true">
+                                    <div class="phone-notch"></div>
+                                    <div class="menu-list">
+                                        <div class="menu-item"><div class="menu-img"></div><div class="menu-line"></div><div class="menu-btn"></div></div>
+                                        <div class="menu-item"><div class="menu-img"></div><div class="menu-line"></div><div class="menu-btn"></div></div>
+                                        <div class="menu-item"><div class="menu-img"></div><div class="menu-line"></div><div class="menu-btn"></div></div>
+                                    </div>
+                                    <div class="cart-notif">1</div>
                                 </div>
                             </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-[#1F1F1F] mb-2 group-hover:text-[#D32F2F] transition-colors">Table Reservation</h3>
-                        <p class="text-[#686868] text-sm leading-relaxed">Visual table management to optimize seating and reduce wait times.</p>
-                    </div>
-
-                    <!-- Card 6: Delivery Management -->
-                    <div class="feature-card group">
-                        <div class="scene-stage">
-                            <div class="map-bg">
-                                <div class="map-path"></div>
-                                <div class="trail"></div>
-                                <div class="scooter-box"><i class="fas fa-motorcycle"></i></div>
-                                <div class="dest-marker"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="feature-body mt-auto">
+                                <h3 id="feat-ordering-title" class="text-xl font-bold text-[#1F1F1F] mb-2 transition-colors group-hover:text-[#D32F2F]">Mobile-First Ordering</h3>
+                                <p class="text-[#686868] text-sm leading-relaxed">Seamless digital menus and instant ordering from any device — no app download required.</p>
                             </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-[#1F1F1F] mb-2 group-hover:text-[#D32F2F] transition-colors">Delivery Management</h3>
-                        <p class="text-[#686868] text-sm leading-relaxed">Track orders from kitchen to doorstep with real-time driver updates.</p>
+                        </article>
+
+                        <!-- Feature: Lightning Fast Setup -->
+                        <article class="feature-card group" role="listitem" data-feature="setup" aria-labelledby="feat-setup-title">
+                            <div class="feature-media scene-stage" aria-hidden="true">
+                                <div class="setup-grid" aria-hidden="true">
+                                    <div class="grid-slot"><div class="widget-block widget-1"><i class="fas fa-utensils widget-icon"></i></div></div>
+                                    <div class="grid-slot"><div class="widget-block widget-2"><i class="fas fa-users widget-icon"></i></div></div>
+                                    <div class="grid-slot"><div class="widget-block widget-3"><i class="fas fa-chart-bar widget-icon"></i></div></div>
+                                    <div class="grid-slot"><div class="widget-block widget-4"><i class="fas fa-cog widget-icon"></i></div></div>
+                                </div>
+                            </div>
+                            <div class="feature-body mt-auto">
+                                <h3 id="feat-setup-title" class="text-xl font-bold text-[#1F1F1F] mb-2 transition-colors group-hover:text-[#D32F2F]">Lightning Fast Setup</h3>
+                                <p class="text-[#686868] text-sm leading-relaxed">Drag, drop, and go. Configure your restaurant profile and menu in minutes.</p>
+                            </div>
+                        </article>
+
+                        <!-- Feature: Advanced Analytics -->
+                        <article class="feature-card group" role="listitem" data-feature="analytics" aria-labelledby="feat-analytics-title">
+                            <div class="feature-media scene-stage" aria-hidden="true">
+                                <div class="graph-container" aria-hidden="true">
+                                    <div class="trend-line">
+                                        <svg class="trend-svg" width="100%" height="100%" viewBox="0 0 300 100" preserveAspectRatio="none">
+                                            <path d="M0,100 C50,80 100,20 150,50 C200,80 250,10 300,30" />
+                                        </svg>
+                                    </div>
+                                    <div class="bar-col"><div class="bar-fill"></div></div>
+                                    <div class="bar-col"><div class="bar-fill"></div></div>
+                                    <div class="bar-col"><div class="bar-fill"></div></div>
+                                    <div class="bar-col"><div class="bar-fill"></div></div>
+                                    <div class="bar-col"><div class="bar-fill"></div></div>
+                                </div>
+                            </div>
+                            <div class="feature-body mt-auto">
+                                <h3 id="feat-analytics-title" class="text-xl font-bold text-[#1F1F1F] mb-2 transition-colors group-hover:text-[#D32F2F]">Advanced Analytics</h3>
+                                <p class="text-[#686868] text-sm leading-relaxed">Real-time insights into sales, peak hours, and customer preferences to help you grow smarter.</p>
+                            </div>
+                        </article>
                     </div>
 
+                    <!-- Row 2: two centered cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 mt-8 justify-center">
+                        <div class="col-span-1 lg:col-span-1 lg:justify-self-end">
+                            <!-- Feature: Secure Payment -->
+                            <article class="feature-card group" role="listitem" data-feature="payment" aria-labelledby="feat-payment-title">
+                                <div class="feature-media scene-stage" aria-hidden="true">
+                                    <div class="card-plastic" aria-hidden="true"><div class="card-chip"></div></div>
+                                    <div class="scanner-zone" aria-hidden="true"><div class="scan-light"></div></div>
+                                    <i class="fas fa-shield-alt shield-icon" aria-hidden="true"></i>
+                                </div>
+                                <div class="feature-body mt-auto">
+                                    <h3 id="feat-payment-title" class="text-xl font-bold text-[#1F1F1F] mb-2 transition-colors group-hover:text-[#D32F2F]">Secure Payment</h3>
+                                    <p class="text-[#686868] text-sm leading-relaxed">Integrated, encrypted payment processing for fast and secure transactions.</p>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="col-span-1 lg:col-span-1 lg:justify-self-start">
+                            <!-- Feature: Table Reservation -->
+                            <article class="feature-card group" role="listitem" data-feature="reservation" aria-labelledby="feat-reservation-title">
+                                <div class="feature-media scene-stage" aria-hidden="true">
+                                    <div class="floor-plan" aria-hidden="true">
+                                        <div class="table-round table-1">
+                                            <div class="chair c-top"></div><div class="chair c-right"></div><div class="chair c-bottom"></div><div class="chair c-left"></div>
+                                            <div class="avatar-pop">OM</div>
+                                        </div>
+                                        <div class="table-round table-2">
+                                            <div class="chair c-top"></div><div class="chair c-right"></div><div class="chair c-bottom"></div><div class="chair c-left"></div>
+                                            <div class="avatar-pop">JD</div>
+                                        </div>
+                                        <div class="table-round table-3">
+                                            <div class="chair c-top"></div><div class="chair c-right"></div><div class="chair c-bottom"></div><div class="chair c-left"></div>
+                                            <div class="avatar-pop">AK</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="feature-body mt-auto">
+                                    <h3 id="feat-reservation-title" class="text-xl font-bold text-[#1F1F1F] mb-2 transition-colors group-hover:text-[#D32F2F]">Table Reservation</h3>
+                                    <p class="text-[#686868] text-sm leading-relaxed">Visual table management to optimise seating and reduce wait times.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -571,6 +590,14 @@
                     <img src="logo.png" alt="MyQuro Logo" class="h-10 mx-auto mb-6">
                     <h3 class="text-xl font-bold text-[#1F1F1F] mb-4">Contact Information</h3>
                     <p class="text-gray-600 mb-6">If you have questions or concerns about these Terms & Conditions, you may contact us at:</p>
+                    
+                    <!-- Footer Contact Button -->
+                    <div class="mb-8">
+                        <a href="contact.html" class="inline-flex items-center text-[#D32F2F] font-semibold hover:text-[#B71C1C] transition-colors border-b-2 border-[#D32F2F] hover:border-[#B71C1C] pb-0.5">
+                            Visit Contact Page <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                        </a>
+                    </div>
+
                     <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 mb-8">
                         <a href="mailto:info.myquro@gmail.com" class="flex items-center gap-2 text-gray-600 hover:text-[#D32F2F] transition-colors">
                             <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-[#D32F2F]"><i class="fas fa-envelope text-sm"></i></div>
