@@ -619,7 +619,11 @@
         .feature-card:hover .float-icon-2 { animation: float-y 2.5s ease-in-out infinite 0.2s; color: #D32F2F; }
         .feature-card:hover .float-icon-3 { animation: float-y 2.2s ease-in-out infinite 0.4s; color: #D32F2F; }
         
-        @keyframes float-y { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        @keyframes float-y { 
+            0% { transform: translateY(0px); } 
+            50% { transform: translateY(-8px); } 
+            100% { transform: translateY(0px); } 
+        }
 
         .setup-btn { transition: transform 0.3s; }
         .feature-card:hover .setup-btn { transform: scale(1.1); box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3); }
@@ -665,23 +669,23 @@
         .feature-card:hover .status-pill-active { 
             background-color: #D32F2F; 
             color: white; 
-            animation: pulse-badge 1.5s infinite;
+            animation: pulse-badge 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
         }
         @keyframes pulse-badge {
-            0% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.4); }
-            70% { box-shadow: 0 0 0 6px rgba(211, 47, 47, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.4); transform: scale(1); }
+            50% { transform: scale(1.05); }
+            70% { box-shadow: 0 0 0 10px rgba(211, 47, 47, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); transform: scale(1); }
         }
         
         .delivery-row { transition: transform 0.3s; }
-        .feature-card:hover .delivery-row:hover { transform: translateX(4px); background-color: #FAFAFA; }
 
         /* ===== MOBILE ANIMATIONS (ALWAYS ACTIVE & LOOPING) ===== */
         @media (max-width: 1024px) {
             /* Card 1: Ordering - Bars fill and shimmer continuously */
-            .feature-card .prog-fill { width: 80%; }
+            .feature-card .prog-fill { width: 80%; animation: fill-pulse 3s ease-in-out infinite alternate; }
             .feature-card .prog-fill::after { animation: shimmer-bar 1.5s infinite; }
-            .feature-card .check-pop { transform: scale(1); }
+            .feature-card .check-pop { animation: pop-pulse 2s infinite; }
 
             /* Card 2: Setup - Rings spin and icons float continuously */
             .feature-card .dashed-ring { animation: spin-slow 8s linear infinite; border-color: #D32F2F; opacity: 0.5; }
@@ -700,12 +704,12 @@
             /* Card 4: Payment - Bubbles float gently */
             .feature-card .chat-bubble-1 { transform: translateX(0) translateY(-5px); animation: float-bubble 3s ease-in-out infinite alternate; }
             .feature-card .chat-bubble-2 { transform: translateX(0) translateY(5px); animation: float-bubble 3.5s ease-in-out infinite alternate-reverse; }
-            .feature-card .success-icon { transform: scale(1.2); }
+            .feature-card .success-icon { animation: pop-pulse 2s infinite; }
 
-            /* Card 5: Reservation - Rows stay slid out */
-            .feature-card .list-row-1 { transform: translateX(8px); }
-            .feature-card .list-row-2 { transform: translateX(12px); }
-            .feature-card .list-row-3 { transform: translateX(6px); }
+            /* Card 5: Reservation - Rows slide in and out */
+            .feature-card .list-row-1 { animation: slide-row 3s ease-in-out infinite alternate; }
+            .feature-card .list-row-2 { animation: slide-row 3.2s ease-in-out infinite alternate 0.2s; }
+            .feature-card .list-row-3 { animation: slide-row 3.4s ease-in-out infinite alternate 0.4s; }
             .feature-card .avatar-dot { transform: scale(1.2); }
 
             /* Card 6: Delivery - Badge pulses continuously */
@@ -714,6 +718,7 @@
                 color: white; 
                 animation: pulse-badge 1.5s infinite;
             }
+            .feature-card .delivery-row { animation: slide-delivery 4s ease-in-out infinite alternate; }
         }
 
         @keyframes graph-pulse {
@@ -725,6 +730,26 @@
             0% { transform: translateY(0); }
             50% { transform: translateY(-4px); }
             100% { transform: translateY(0); }
+        }
+
+        @keyframes fill-pulse {
+            0% { width: 30%; }
+            100% { width: 90%; }
+        }
+
+        @keyframes pop-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        @keyframes slide-row {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(12px); }
+        }
+
+        @keyframes slide-delivery {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(8px); }
         }
     </style>
 </head>
@@ -757,18 +782,27 @@
     </div>
 
     <div class="content-wrapper">
-        <!-- Top Right Terms Button -->
-        <div class="absolute top-0 right-0 p-4 sm:p-6 z-50">
-            <a href="terms.html" class="group flex items-center gap-2 px-5 py-2.5 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full shadow-sm hover:shadow-md hover:border-red-200 hover:-translate-y-0.5 transition-all duration-300">
-                <i class="fas fa-file-contract text-gray-400 group-hover:text-[#D32F2F] transition-colors text-sm"></i>
-                <span class="text-gray-600 font-medium text-sm group-hover:text-[#D32F2F] transition-colors">Terms & Conditions</span>
+        <!-- Top Right Legal Buttons -->
+        <!-- Changed positioning for mobile to avoid overlap with logo -->
+        <div class="absolute top-2 right-2 sm:top-0 sm:right-0 p-2 sm:p-6 z-50 flex flex-col sm:flex-row gap-2 sm:gap-3 items-end">
+            <!-- Terms Button -->
+            <a href="terms.html" class="group flex items-center gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full shadow-sm hover:shadow-md hover:border-red-200 hover:-translate-y-0.5 transition-all duration-300">
+                <i class="fas fa-file-contract text-gray-400 group-hover:text-[#D32F2F] transition-colors text-[10px] sm:text-sm"></i>
+                <span class="text-gray-600 font-medium text-[10px] sm:text-sm group-hover:text-[#D32F2F] transition-colors whitespace-nowrap">Terms</span>
+            </a>
+            
+            <!-- Privacy Button -->
+            <a href="privacy.html" class="group flex items-center gap-2 px-3 py-1.5 sm:px-5 sm:py-2.5 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full shadow-sm hover:shadow-md hover:border-red-200 hover:-translate-y-0.5 transition-all duration-300">
+                <i class="fas fa-user-shield text-gray-400 group-hover:text-[#D32F2F] transition-colors text-[10px] sm:text-sm"></i>
+                <span class="text-gray-600 font-medium text-[10px] sm:text-sm group-hover:text-[#D32F2F] transition-colors whitespace-nowrap">Privacy</span>
             </a>
         </div>
 
         <!-- HERO SECTION -->
         <section class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20 min-h-screen flex flex-col justify-center">
             <!-- Logo at Top -->
-            <div class="logo-section logo-entrance">
+            <!-- Added extra margin top on mobile to clear buttons -->
+            <div class="logo-section logo-entrance mt-12 sm:mt-0">
                 <img src="logo.png" alt="MyQuro Logo" class="logo-img mb-3 sm:mb-4">
                 <p class="text-xs sm:text-sm text-gray-500 font-medium">Restaurant Management Platform</p>
             </div>
@@ -796,47 +830,14 @@
 
                     <!-- Coming Soon Badge with Animation -->
                     <div class="mb-6 sm:mb-8 badge-entrance">
-                        <div class="coming-soon-badge space-x-2 bg-gradient-to-r from-red-50 to-white border-2 border-[#D32F2F] rounded-full px-4 sm:px-6 py-2 sm:py-3 shadow-lg">
+                        <div class="coming-soon-badge space-x-2 bg-gradient-to-r from-red-50 to-white border-2 border-[#D32F2F] rounded-full px-4 sm:px-6 py-2 sm:py-3 shadow-lg hover:shadow-red-200/50 transition-shadow duration-300 cursor-default">
                             <i class="fas fa-rocket text-[#D32F2F] rocket-icon text-lg sm:text-xl"></i>
                             <span class="shimmer-text font-bold text-base sm:text-lg">Launching Soon</span>
                             <span class="countdown-dot text-[#D32F2F] text-xl">●</span>
                         </div>
                     </div>
                     
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 buttons-entrance mb-6 sm:mb-8">
-                        <button class="btn-hover px-6 sm:px-8 py-3 sm:py-4 bg-[#D32F2F] text-white rounded-xl font-semibold text-base sm:text-lg flex items-center justify-center shadow-lg">
-                            <i class="fas fa-bell mr-2"></i>
-                            <span>Notify Me</span>
-                        </button>
-                        <button class="btn-hover btn-outline px-6 sm:px-8 py-3 sm:py-4 border-2 border-[#D32F2F] text-[#D32F2F] rounded-xl font-semibold text-base sm:text-lg flex items-center justify-center space-x-2 shadow-md">
-                            <i class="fas fa-play-circle"></i>
-                            <span>Watch Demo</span>
-                        </button>
-                    </div>
-
-                    <!-- Email Notification -->
-                    <div class="email-entrance">
-                        <p class="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3 font-medium">
-                            <i class="fas fa-envelope mr-1"></i>
-                            Get notified when we launch:
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                            <input 
-                                type="email" 
-                                placeholder="Enter your email address" 
-                                class="email-input flex-1 px-4 py-3 sm:py-3.5 border-2 border-gray-300 rounded-xl focus:border-[#D32F2F] focus:outline-none text-sm sm:text-base"
-                            />
-                            <button class="btn-hover px-5 sm:px-6 py-3 sm:py-3.5 bg-[#2B2B2B] text-white rounded-xl font-semibold text-sm sm:text-base shadow-lg whitespace-nowrap">
-                                <i class="fas fa-paper-plane mr-2"></i>
-                                Subscribe
-                            </button>
-                        </div>
-                        <p class="text-xs text-gray-400 mt-2">
-                            <i class="fas fa-lock mr-1"></i>
-                            We respect your privacy. Unsubscribe anytime.
-                        </p>
-                    </div>
+                    <!-- Removed Buttons and Email Section -->
                 </div>
                 
                 <!-- RIGHT COLUMN - Image -->
@@ -849,30 +850,6 @@
                         <div class="relative">
                             <img src="home1st.png" alt="MyQuro Restaurant Management Platform" class="hero-image">
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- STATS BAR -->
-        <section class="bg-gradient-to-r from-[#D32F2F] to-[#FF5252] py-8 sm:py-12 stats-entrance shadow-2xl">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 text-center text-white">
-                    <div class="stat-item">
-                        <h3 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2">120+</h3>
-                        <p class="text-xs sm:text-sm lg:text-base opacity-90 font-medium">Restaurants Ready</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2">240+</h3>
-                        <p class="text-xs sm:text-sm lg:text-base opacity-90 font-medium">Beta Testers</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2">10+</h3>
-                        <p class="text-xs sm:text-sm lg:text-base opacity-90 font-medium">Cities Launching</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2">2025</h3>
-                        <p class="text-xs sm:text-sm lg:text-base opacity-90 font-medium">Launch Year</p>
                     </div>
                 </div>
             </div>
@@ -1210,94 +1187,39 @@
         </section>
 
         <!-- FOOTER SECTION -->
-        <footer class="bg-white py-8 sm:py-12">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col sm:flex-row items-center justify-between mb-8">
-                    <!-- Logo -->
-                    <div class="mb-4 sm:mb-0">
-                        <img src="logo.png" alt="MyQuro Logo" class="h-10 sm:h-12">
+        <footer class="bg-white py-12 border-t border-gray-200">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="max-w-2xl mx-auto">
+                    <img src="logo.png" alt="MyQuro Logo" class="h-10 mx-auto mb-6">
+                    
+                    <h3 class="text-xl font-bold text-[#1F1F1F] mb-4">Contact Information</h3>
+                    <p class="text-gray-600 mb-6">
+                        If you have questions or concerns about these Terms & Conditions, you may contact us at:
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 mb-8">
+                        <a href="mailto:info.myquro@gmail.com" class="flex items-center gap-2 text-gray-600 hover:text-[#D32F2F] transition-colors">
+                            <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-[#D32F2F]">
+                                <i class="fas fa-envelope text-sm"></i>
+                            </div>
+                            <span class="font-medium">info.myquro@gmail.com</span>
+                        </a>
+                        
+                        <a href="tel:+917061903429" class="flex items-center gap-2 text-gray-600 hover:text-[#D32F2F] transition-colors">
+                            <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-[#D32F2F]">
+                                <i class="fas fa-phone-alt text-sm"></i>
+                            </div>
+                            <span class="font-medium">+91 70619 03429</span>
+                        </a>
                     </div>
                     
-                    <!-- Social Links -->
-                    <div class="flex gap-4 text-gray-500">
-                        <a href="#" class="social-icon transition-transform transform hover:scale-110">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon transition-transform transform hover:scale-110">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon transition-transform transform hover:scale-110">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-icon transition-transform transform hover:scale-110">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
+                    <div class="text-sm text-gray-500">
+                        <span class="font-semibold text-[#1F1F1F]">Company:</span> MyQuro
                     </div>
                 </div>
-
-                <div class="border-t border-gray-200 pt-6">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-gray-600">
-                        <!-- Company Info -->
-                        <div>
-                            <h4 class="text-[#D32F2F] font-semibold mb-4">Company</h4>
-                            <ul class="space-y-2">
-                                <li><a href="#" class="hover:text-[#D32F2F] transition-colors">About Us</a></li>
-                                <li><a href="#" class="hover:text-[#D32F2F] transition-colors">Careers</a></li>
-                                <li><a href="#" class="hover:text-[#D32F2F] transition-colors">Blog</a></li>
-                                <li><a href="#" class="hover:text-[#D32F2F] transition-colors">Contact</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Support -->
-                        <div>
-                            <h4 class="text-[#D32F2F] font-semibold mb-4">Support</h4>
-                            <ul class="space-y-2">
-                                <li><a href="#" class="hover:text-[#D32F2F] transition-colors">Help Center</a></li>
-                                <li><a href="#" class="hover:text-[#D32F2F] transition-colors">Privacy Policy</a></li>
-                                <li><a href="#" class="hover:text-[#D32F2F] transition-colors">Terms of Service</a></li>
-                                <li><a href="#" class="hover:text-[#D32F2F] transition-colors">Refund Policy</a></li>
-                            </ul>
-                        </div>
-
-                        <!-- Contact -->
-                        <div>
-                            <h4 class="text-[#D32F2F] font-semibold mb-4">Contact</h4>
-                            <p class="text-sm text-gray-500 mb-2">
-                                <i class="fas fa-map-marker-alt mr-2"></i>
-                                123 Main Street, Anytown, USA
-                            </p>
-                            <p class="text-sm text-gray-500 mb-2">
-                                <i class="fas fa-phone-alt mr-2"></i>
-                                +1 (555) 123-4567
-                            </p>
-                            <p class="text-sm text-gray-500">
-                                <i class="fas fa-envelope mr-2"></i>
-                                support@myquro.com
-                            </p>
-                        </div>
-
-                        <!-- Newsletter -->
-                        <div>
-                            <h4 class="text-[#D32F2F] font-semibold mb-4">Newsletter</h4>
-                            <p class="text-sm text-gray-500 mb-4">
-                                Subscribe to our newsletter for the latest updates and offers.
-                            </p>
-                            <div class="flex flex-col sm:flex-row gap-2">
-                                <input 
-                                    type="email" 
-                                    placeholder="Enter your email" 
-                                    class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D32F2F] focus:border-transparent"
-                                />
-                                <button class="bg-[#D32F2F] text-white px-4 py-2 rounded-lg font-semibold transition-all duration-300 hover:bg-[#C62828]">
-                                    Subscribe
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-8 border-t border-gray-200 pt-4 text-center text-gray-500 text-sm">
-                    &copy; 2023 MyQuro. All rights reserved.
+                
+                <div class="mt-12 pt-8 border-t border-gray-100 text-sm text-gray-400">
+                    &copy; 2025 MyQuro. All rights reserved.
                 </div>
             </div>
         </footer>
@@ -1366,35 +1288,6 @@
                 ease: "power3.out",
                 stagger: 0.1
             }, "-=0.2");
-        });
-
-        // Existing Email Subscription Logic
-        const subscribeBtn = document.querySelector('.email-input + button');
-        const emailInput = document.querySelector('.email-input');
-        
-        subscribeBtn?.addEventListener('click', function() {
-            const email = emailInput.value.trim();
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (email && emailRegex.test(email)) {
-                this.innerHTML = '<i class="fas fa-check mr-2"></i>Subscribed!';
-                this.classList.add('bg-green-500');
-                this.classList.remove('bg-[#2B2B2B]');
-                
-                setTimeout(() => {
-                    alert('🎉 Thank you! We will notify you at: ' + email);
-                    emailInput.value = '';
-                    this.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Subscribe';
-                    this.classList.remove('bg-green-500');
-                    this.classList.add('bg-[#2B2B2B]');
-                }, 1500);
-            } else {
-                emailInput.style.animation = 'shake 0.5s';
-                setTimeout(() => {
-                    emailInput.style.animation = '';
-                }, 500);
-                alert('⚠️ Please enter a valid email address');
-            }
         });
 
         // Existing Scroll Reveal for other sections
