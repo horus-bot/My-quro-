@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyQuro - Coming Soon</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Add GSAP Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -49,11 +48,6 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
         }
-
-        /* Remove old circle styles */
-        /* .bg-circle { ... } */
-        /* .bg-circle-1 { ... } */
-        /* .bg-circle-2 { ... } */
 
         .scribble { position: relative; display: inline-block; }
         .scribble::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 100%; height: 12px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 12'%3E%3Cpath d='M0,6 Q75,0 150,6 T300,6' stroke='%23D32F2F' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-size: 100% 100%; }
@@ -112,9 +106,6 @@
             border-color: rgba(211, 47, 47, 0.1);
         }
 
-        /* Glass Text Gradient for Badge - REMOVED/UNUSED */
-        /* .glass-text-gradient { ... } */
-        
         /* Splash Screen */
         .page-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh; background: #D32F2F; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; animation: overlayFadeOut 3s ease-out forwards; }
         @keyframes overlayFadeOut { 0% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
@@ -351,53 +342,42 @@
     </style>
 </head>
 <body>
-    <!-- Background Decoration -->
     <div class="bg-decoration">
-        <!-- Base Pattern -->
         <div class="hex-grid-pattern"></div>
 
-        <!-- Accent Hexagon 1: Top Right - Darker Grey Outline -->
         <svg class="hex-accent float-slow" style="top: -50px; right: -50px; width: 300px; height: 340px;" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M50 0.5 L99.5 29.5 V85.5 L50 114.5 L0.5 85.5 V29.5 L50 0.5 Z" stroke="#6B7280" stroke-width="0.8"/>
         </svg>
 
-        <!-- Accent Hexagon 2: Middle Left - Red Tint Fill -->
         <svg class="hex-accent float-med" style="top: 30%; left: -60px; width: 200px; height: 230px;" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M50 0.5 L99.5 29.5 V85.5 L50 114.5 L0.5 85.5 V29.5 L50 0.5 Z" fill="rgba(211, 47, 47, 0.05)" stroke="rgba(211, 47, 47, 0.2)" stroke-width="0.8"/>
         </svg>
 
-        <!-- Accent Hexagon 3: Bottom Right - Faint Red Outline -->
         <svg class="hex-accent float-slow" style="bottom: 10%; right: 5%; width: 150px; height: 170px;" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M50 0.5 L99.5 29.5 V85.5 L50 114.5 L0.5 85.5 V29.5 L50 0.5 Z" stroke="rgba(211, 47, 47, 0.4)" stroke-width="1"/>
         </svg>
 
-        <!-- Accent Hexagon 4: Top Left - Very Large Faint Grey -->
         <svg class="hex-accent" style="top: 10%; left: 10%; width: 400px; height: 460px; opacity: 0.4;" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M50 0.5 L99.5 29.5 V85.5 L50 114.5 L0.5 85.5 V29.5 L50 0.5 Z" stroke="#9CA3AF" stroke-width="0.8"/>
         </svg>
 
-        <!-- NEW: Accent Hexagon 5: Bottom Left - Medium Grey -->
         <svg class="hex-accent float-med" style="bottom: 20%; left: -40px; width: 280px; height: 320px; opacity: 0.5;" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M50 0.5 L99.5 29.5 V85.5 L50 114.5 L0.5 85.5 V29.5 L50 0.5 Z" stroke="#9CA3AF" stroke-width="0.8"/>
         </svg>
 
-        <!-- NEW: Accent Hexagon 6: Middle Right - Faint Red Fill -->
         <svg class="hex-accent float-slow" style="top: 45%; right: -60px; width: 220px; height: 250px;" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
              <path d="M50 0.5 L99.5 29.5 V85.5 L50 114.5 L0.5 85.5 V29.5 L50 0.5 Z" fill="rgba(211, 47, 47, 0.03)" stroke="rgba(211, 47, 47, 0.15)" stroke-width="0.8"/>
         </svg>
 
-        <!-- NEW: Accent Hexagon 7: Top Center - Small Distinct -->
         <svg class="hex-accent float-med" style="top: 8%; left: 55%; width: 80px; height: 92px; opacity: 0.6;" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M50 0.5 L99.5 29.5 V85.5 L50 114.5 L0.5 85.5 V29.5 L50 0.5 Z" stroke="#4B5563" stroke-width="1"/>
         </svg>
         
-        <!-- NEW: Accent Hexagon 8: Near Footer - Large Faint Red -->
         <svg class="hex-accent float-slow" style="bottom: -80px; left: 35%; width: 400px; height: 460px; opacity: 0.2;" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M50 0.5 L99.5 29.5 V85.5 L50 114.5 L0.5 85.5 V29.5 L50 0.5 Z" stroke="rgba(211, 47, 47, 0.1)" stroke-width="0.8"/>
         </svg>
     </div>
 
-    <!-- CRAZY TEXT SPLASH SCREEN (2 Seconds) -->
     <div class="page-overlay">
         <div class="splash-text-container">
             <div class="splash-ring"></div>
@@ -414,7 +394,6 @@
     </div>
 
     <div class="content-wrapper">
-        <!-- Top Right Legal Buttons: desktop (hidden on mobile) -->
         <div class="hidden md:flex absolute top-4 right-6 z-50 gap-2 pointer-events-auto">
             <a href="terms.html" class="group flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-sm border border-gray-200 rounded-full shadow-sm hover:shadow-md hover:border-red-200 transition-all duration-300">
                 <i class="fas fa-file-contract text-gray-400 group-hover:text-[#D32F2F]"></i>
@@ -430,12 +409,10 @@
             </a>
         </div>
 
-        <!-- Mobile: Hamburger toggles top buttons (appears on top when opened) -->
         <button id="mobileMenuBtn" class="md:hidden absolute top-4 right-4 z-50 w-11 h-11 rounded-lg bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-sm">
             <i class="fas fa-bars text-gray-700"></i>
         </button>
 
-        <!-- Mobile menu panel (hidden by default) -->
         <div id="mobileMenu" class="hidden fixed top-0 right-0 left-0 z-50 bg-white shadow-lg p-6 pt-20 md:hidden">
             <div class="flex justify-between items-center mb-6">
                 <img src="logo.png" alt="MyQuro" class="h-8">
@@ -448,17 +425,13 @@
             </nav>
         </div>
 
-        <!-- HERO SECTION -->
-        <section class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20 min-h-screen flex flex-col justify-center pt-16 sm:pt-12"> <!-- Added pt-16 for mobile spacing -->
-            <div class="logo-section logo-entrance mt-4 sm:mt-0"> <!-- Reduced top margin -->
-                <img src="logo.png" alt="MyQuro Logo" class="logo-img mb-3 sm:mb-4">
+        <section class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20 min-h-screen flex flex-col justify-center pt-16 sm:pt-12"> <div class="logo-section logo-entrance mt-4 sm:mt-0"> <img src="logo.png" alt="MyQuro Logo" class="logo-img mb-3 sm:mb-4">
                 <p class="text-xs sm:text-sm text-gray-500 font-medium">Restaurant Management Platform</p>
             </div>
 
             <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                 <div class="order-2 lg:order-1">
                     <div class="inline-block mb-4 sm:mb-6 tag-entrance">
-                        <!-- Updated Badge: Clean White Pill with Red Text -->
                         <span class="tag-badge px-6 py-2.5 rounded-full text-sm sm:text-base font-medium text-[#D32F2F] tracking-wide inline-block">
                             #1 Restaurant Management Platform
                         </span>
@@ -477,7 +450,6 @@
                         </div>
                     </div>
 
-                    <!-- Hero Contact Button -->
                     <div class="description-entrance" style="animation-delay: 1.6s;">
                         <a href="contact.html" class="inline-flex items-center justify-center px-8 py-3 text-base font-bold text-white transition-all duration-200 bg-[#D32F2F] border border-transparent rounded-full hover:bg-[#B71C1C] hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600">
                             Contact Us
@@ -496,12 +468,10 @@
             </div>
         </section>
 
-        <!-- FEATURES SECTION -->
         <section id="features" class="relative py-20 overflow-hidden" style="background-color: #F5F6F7;">
             <div class="absolute top-0 left-0 w-full h-1 bg-[#D32F2F]"></div>
 
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <!-- Header -->
                 <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 gap-8">
                     <div class="max-w-2xl">
                         <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-white border border-red-200 mb-4 shadow-sm">
@@ -520,11 +490,8 @@
                     </div>
                 </div>
 
-                <!-- Features Grid: 3 on first row, 2 centered on second row -->
                 <div class="features-wrapper">
-                    <!-- Row 1: three cards -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Feature: Mobile-First Ordering -->
                         <article class="feature-card group" role="listitem" data-feature="ordering" aria-labelledby="feat-ordering-title">
                             <div class="feature-media scene-stage" aria-hidden="true">
                                 <div class="phone-frame" aria-hidden="true">
@@ -543,7 +510,6 @@
                             </div>
                         </article>
 
-                        <!-- Feature: Lightning Fast Setup -->
                         <article class="feature-card group" role="listitem" data-feature="setup" aria-labelledby="feat-setup-title">
                             <div class="feature-media scene-stage" aria-hidden="true">
                                 <div class="setup-grid" aria-hidden="true">
@@ -559,7 +525,6 @@
                             </div>
                         </article>
 
-                        <!-- Feature: Advanced Analytics -->
                         <article class="feature-card group" role="listitem" data-feature="analytics" aria-labelledby="feat-analytics-title">
                             <div class="feature-media scene-stage" aria-hidden="true">
                                 <div class="graph-container" aria-hidden="true">
@@ -582,10 +547,8 @@
                         </article>
                     </div>
 
-                    <!-- Row 2: two centered cards -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 mt-8 justify-center">
                         <div class="col-span-1 lg:col-span-1 lg:justify-self-end">
-                            <!-- Feature: Secure Payment -->
                             <article class="feature-card group" role="listitem" data-feature="payment" aria-labelledby="feat-payment-title">
                                 <div class="feature-media scene-stage" aria-hidden="true">
                                     <div class="card-plastic" aria-hidden="true"><div class="card-chip"></div></div>
@@ -600,7 +563,6 @@
                         </div>
 
                         <div class="col-span-1 lg:col-span-1 lg:justify-self-start">
-                            <!-- Feature: Table Reservation -->
                             <article class="feature-card group" role="listitem" data-feature="reservation" aria-labelledby="feat-reservation-title">
                                 <div class="feature-media scene-stage" aria-hidden="true">
                                     <div class="floor-plan" aria-hidden="true">
@@ -629,7 +591,6 @@
             </div>
         </section>
 
-        <!-- HOW WE HELP SECTION -->
         <section class="how-we-help-section py-20 bg-[#F5F6F7] overflow-hidden border-t border-gray-200">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="how-we-help-header flex flex-col lg:flex-row justify-between items-end mb-20 gap-8 opacity-0 translate-y-10">
@@ -721,13 +682,11 @@
             </div>
         </section>
 
-        <!-- FOOTER SECTION -->
         <footer class="footer-gradient py-12 md:py-16 border-t border-white/10 relative">
             <div class="footer-glow"></div>
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
                     
-                    <!-- Brand & Socials -->
                     <div class="md:col-span-5 text-center md:text-left">
                         <img src="logo.png" alt="MyQuro Logo" class="h-12 mb-4 mx-auto md:mx-0 brightness-0 invert opacity-90">
                         <p class="text-purple-200/80 mb-6 leading-relaxed max-w-md mx-auto md:mx-0">
@@ -749,7 +708,6 @@
                         </div>
                     </div>
 
-                    <!-- Quick Links -->
                     <div class="md:col-span-3 text-center md:text-left">
                         <h3 class="text-lg font-bold text-white mb-6">Quick Links</h3>
                         <ul class="space-y-3 inline-block text-left md:block">
@@ -761,43 +719,37 @@
                         </ul>
                     </div>
 
-                    <!-- Contact Info -->
-                    <div class="md:col-span-4 text-center md:text-left">
+                    <div class="md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left">
                         <h3 class="text-lg font-bold text-white mb-6">Get in Touch</h3>
-                        <!-- Wrapper to center the block on mobile but keep items left-aligned internally -->
-                        <div class="inline-block text-left w-full max-w-xs md:max-w-none">
-                            <div class="space-y-4">
-                                <!-- Location -->
-                                <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white shrink-0 mt-1">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-white font-medium mb-1">Location</p>
-                                        <p class="text-purple-200/70 text-sm leading-relaxed">Bokaro, Jharkhand, India</p>
-                                    </div>
+                        
+                        <div class="flex flex-col gap-4 text-left w-fit md:w-full">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white shrink-0 mt-1">
+                                    <i class="fas fa-map-marker-alt"></i>
                                 </div>
-
-                                <!-- Email -->
-                                <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white shrink-0 mt-1">
-                                        <i class="fas fa-envelope"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-white font-medium mb-1">Email</p>
-                                        <a href="mailto:info.myquro@gmail.com" class="text-purple-200/70 text-sm hover:text-white transition-colors">info.myquro@gmail.com</a>
-                                    </div>
+                                <div>
+                                    <p class="text-white font-medium mb-1">Location</p>
+                                    <p class="text-purple-200/70 text-sm leading-relaxed">Bokaro, Jharkhand, India</p>
                                 </div>
+                            </div>
 
-                                <!-- Phone -->
-                                <div class="flex items-start gap-4">
-                                    <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white shrink-0 mt-1">
-                                        <i class="fas fa-phone-alt"></i>
-                                    </div>
-                                    <div>
-                                        <p class="text-white font-medium mb-1">Phone</p>
-                                        <a href="tel:+917061903429" class="text-purple-200/70 text-sm hover:text-white transition-colors">+91 70619 03429</a>
-                                    </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white shrink-0 mt-1">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-medium mb-1">Email</p>
+                                    <a href="mailto:info.myquro@gmail.com" class="text-purple-200/70 text-sm hover:text-white transition-colors">info.myquro@gmail.com</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white shrink-0 mt-1">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white font-medium mb-1">Phone</p>
+                                    <a href="tel:+917061903429" class="text-purple-200/70 text-sm hover:text-white transition-colors">+91 70619 03429</a>
                                 </div>
                             </div>
                         </div>
