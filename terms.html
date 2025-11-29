@@ -17,6 +17,39 @@
         
         /* Smooth Scroll Behavior */
         html { scroll-behavior: smooth; }
+
+        /* Hexagonal Background for Hero Only */
+        .hero-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Hide on mobile */
+        @media (max-width: 768px) {
+            .hero-bg-pattern {
+                display: none;
+            }
+        }
+
+        .hex-grid {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='56' height='98' viewBox='0 0 56 98' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M28 0 L56 16.5 V49.5 L28 66 L0 49.5 V16.5 Z' fill='none' stroke='%239CA3AF' stroke-width='0.5'/%3E%3Cpath d='M28 98 L56 81.5 V48.5' fill='none' stroke='%239CA3AF' stroke-width='0.5'/%3E%3Cpath d='M0 48.5 V81.5 L28 98' fill='none' stroke='%239CA3AF' stroke-width='0.5'/%3E%3C/svg%3E");
+            background-size: 56px 98px;
+            opacity: 0.03; /* Very very transparent */
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+        }
+        .hex-accent {
+            position: absolute;
+            opacity: 0.05; /* Extremely faint accents */
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -27,22 +60,34 @@
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center">
                     <a href="index.html" class="flex items-center gap-2">
-                        <!-- Using the logo image provided -->
                         <img src="logo.png" alt="MyQuro" class="h-10 w-auto"> 
                     </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="text-gray-600 hover:text-[#D32F2F] font-medium transition-colors">Home</a>
                     <a href="index.html#features" class="text-gray-600 hover:text-[#D32F2F] font-medium transition-colors">Features</a>
-                    <a href="index.html" class="bg-[#D32F2F] text-white px-6 py-2.5 rounded-full font-medium hover:bg-[#B71C1C] transition-all shadow-lg shadow-red-500/30">Get Started</a>
+                    <a href="contact.html" class="bg-[#D32F2F] text-white px-6 py-2.5 rounded-full font-medium hover:bg-[#B71C1C] transition-all shadow-lg shadow-red-500/30">Get Started</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Header Section -->
-    <header class="bg-white pt-32 pb-16 border-b border-gray-200">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <header class="bg-white pt-32 pb-16 border-b border-gray-200 relative overflow-hidden">
+        <!-- Hexagonal Background Layer -->
+        <div class="hero-bg-pattern">
+            <div class="hex-grid"></div>
+            <!-- Accent Hexagon 1 -->
+            <svg class="hex-accent" style="top: -20px; right: -20px; width: 200px; height: 230px;" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 0.5 L99.5 29.5 V85.5 L50 114.5 L0.5 85.5 V29.5 L50 0.5 Z" stroke="#9CA3AF" stroke-width="0.5"/>
+            </svg>
+            <!-- Accent Hexagon 2 -->
+            <svg class="hex-accent" style="bottom: 10%; left: -40px; width: 150px; height: 170px;" viewBox="0 0 100 115" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 0.5 L99.5 29.5 V85.5 L50 114.5 L0.5 85.5 V29.5 L50 0.5 Z" stroke="#D32F2F" stroke-width="0.5"/>
+            </svg>
+        </div>
+
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <p class="text-[#D32F2F] font-bold tracking-wide uppercase text-sm mb-3">Legal Information</p>
             <h1 class="text-4xl md:text-5xl font-extrabold text-[#1F1F1F] mb-4">Terms & Conditions</h1>
             <p class="text-[#686868] text-lg max-w-2xl mx-auto">Please read these terms carefully before using our platform. They contain important information regarding your legal rights and obligations.</p>
@@ -52,9 +97,7 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Removed Sidebar, Centered Content -->
         <main class="w-full max-w-4xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 prose max-w-none">
             
             <section id="general">
@@ -253,17 +296,57 @@
         </main>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-[#1F1F1F] text-white py-12 mt-20">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <img src="logo.png" alt="MyQuro" class="h-12 w-auto mx-auto mb-6 brightness-0 invert">
-            <p class="text-gray-400 mb-6">Empowering restaurants with digital excellence.</p>
-            <div class="flex justify-center space-x-6 mb-8">
-                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-twitter text-xl"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-instagram text-xl"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+    <footer class="footer-gradient py-14 relative z-20 mt-20">
+        <div class="footer-glow" aria-hidden="true"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-10 md:gap-8">
+                
+                <div class="md:w-1/3 text-center md:text-left">
+                    <img src="logo.png" alt="MyQuro" class="h-10 mx-auto md:mx-0 mb-4 brightness-0 invert"> 
+                    <p class="muted text-sm max-w-xs mx-auto md:mx-0 leading-relaxed">
+                        Empowering restaurants with next‑gen digital tools. Streamline operations, boost revenue, and delight customers.
+                    </p>
+                </div>
+
+                <div class="md:w-1/3 text-center md:text-left">
+                    <h4 class="font-bold mb-4 text-lg">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-sm font-medium hover:text-white">Home</a></li>
+                        <li><a href="aboutus.html" class="text-sm font-medium hover:text-white">About Us</a></li>
+                        <li><a href="contact.html" class="text-sm font-medium hover:text-white">Contact</a></li>
+                        <li><a href="terms.html" class="text-sm font-medium text-white font-bold">Terms & Conditions</a></li>
+                        <li><a href="privacy.html" class="text-sm font-medium hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:w-1/3 text-center md:text-left">
+                    <h4 class="font-bold mb-4 text-lg">Contact</h4>
+                    <p class="font-medium mb-1">Bokaro, Jharkhand, India</p>
+                    <p class="muted text-sm mb-4">
+                        <a href="mailto:info.myquro@gmail.com" class="hover:text-white transition-colors">info.myquro@gmail.com</a>
+                    </p>
+                    
+                    <div class="flex justify-center md:justify-start gap-4 mt-6">
+                        <a href="https://www.instagram.com/myquro12?igsh=cjZyeWw5bTd6d3Zk" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#D32F2F] hover:scale-110 transition-all duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://x.com/my_quro12" aria-label="X / Twitter" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#D32F2F] hover:scale-110 transition-all duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1aR3Ve9Dj2/" aria-label="Facebook" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#D32F2F] hover:scale-110 transition-all duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/109372091/admin/dashboard/" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#D32F2F] hover:scale-110 transition-all duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <p class="text-gray-500 text-sm">&copy; 2025 MyQuro. All rights reserved.</p>
+
+            <div class="mt-12 pt-8 border-t border-white/10 text-center text-sm muted">
+                <p>&copy; 2025 MyQuro. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -288,6 +371,7 @@
                     link.classList.add('active');
                 }
             });
+        });
     </script>
 </body>
 </html>

@@ -29,7 +29,7 @@
             /* SVG Data URI for a seamless hexagonal tile */
             background-image: url("data:image/svg+xml,%3Csvg width='56' height='98' viewBox='0 0 56 98' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M28 0 L56 16.5 V49.5 L28 66 L0 49.5 V16.5 Z' fill='none' stroke='%239CA3AF' stroke-width='0.5'/%3E%3Cpath d='M28 98 L56 81.5 V48.5' fill='none' stroke='%239CA3AF' stroke-width='0.5'/%3E%3Cpath d='M0 48.5 V81.5 L28 98' fill='none' stroke='%239CA3AF' stroke-width='0.5'/%3E%3C/svg%3E");
             background-size: 56px 98px;
-            opacity: 0.15; /* Increased visibility slightly */
+            opacity: 0.05; /* Reduced from 0.15 for better text readability */
             mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.1) 100%);
             -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.1) 100%);
         }
@@ -37,7 +37,8 @@
         /* 2. Floating Accent Hexagons */
         .hex-accent {
             position: absolute;
-            opacity: 0.9; /* Increased base opacity */
+            opacity: 0.15; /* Drastically reduced from 0.9 to ensure content overlay visibility */
+            z-index: -1; /* Explicitly put behind content */
         }
         
         /* Animation for floating feel */
@@ -115,10 +116,10 @@
         /* .glass-text-gradient { ... } */
         
         /* Splash Screen */
-        .page-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh; background: #D32F2F; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; animation: overlayFadeOut 2s ease-out forwards; }
+        .page-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh; background: #D32F2F; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; animation: overlayFadeOut 3s ease-out forwards; }
         @keyframes overlayFadeOut { 0% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
-        .splash-text-container { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; perspective: 1000px; }
-        .splash-title { display: flex; font-size: clamp(3.5rem, 12vw, 7rem); font-weight: 900; color: white; line-height: 1; letter-spacing: -0.02em; text-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .splash-text-container { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; perspective: 1000px; width: 100%; }
+        .splash-title { display: flex; justify-content: center; font-size: clamp(2.5rem, 15vw, 7rem); font-weight: 900; color: white; line-height: 1; letter-spacing: -0.02em; text-shadow: 0 10px 30px rgba(0,0,0,0.2); width: 100%; }
         .splash-char { display: inline-block; opacity: 0; transform-origin: bottom center; animation: crazyLetterReveal 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
         @keyframes crazyLetterReveal { 0% { opacity: 0; transform: translateY(100px) rotateX(-90deg) scale(0.5) skewX(20deg); filter: blur(20px); } 100% { opacity: 1; transform: translateY(0) rotateX(0) scale(1) skewX(0); } }
         .splash-char:nth-child(1) { animation-delay: 0.1s; } .splash-char:nth-child(2) { animation-delay: 0.2s; } .splash-char:nth-child(3) { animation-delay: 0.3s; } .splash-char:nth-child(4) { animation-delay: 0.4s; } .splash-char:nth-child(5) { animation-delay: 0.5s; } .splash-char:nth-child(6) { animation-delay: 0.6s; }
@@ -721,10 +722,12 @@
         </section>
 
         <!-- FOOTER SECTION -->
-        <footer class="footer-gradient py-16 border-t border-white/10 relative">
+        <footer class="footer-gradient py-12 md:py-16 border-t border-white/10 relative">
             <div class="footer-glow"></div>
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+                    
+                    <!-- Brand & Socials -->
                     <div class="md:col-span-5 text-center md:text-left">
                         <img src="logo.png" alt="MyQuro Logo" class="h-12 mb-4 mx-auto md:mx-0 brightness-0 invert opacity-90">
                         <p class="text-purple-200/80 mb-6 leading-relaxed max-w-md mx-auto md:mx-0">
@@ -746,47 +749,55 @@
                         </div>
                     </div>
 
+                    <!-- Quick Links -->
                     <div class="md:col-span-3 text-center md:text-left">
                         <h3 class="text-lg font-bold text-white mb-6">Quick Links</h3>
-                        <ul class="space-y-3">
-                            <li><a href="index.html" class="text-purple-200/70 hover:text-white transition-colors">Home</a></li>
-                            <li><a href="aboutus.html" class="text-purple-200/70 hover:text-white transition-colors">About Us</a></li>
-                            <li><a href="contact.html" class="text-purple-200/70 hover:text-white transition-colors">Contact</a></li>
-                            <li><a href="terms.html" class="text-purple-200/70 hover:text-white transition-colors">Terms</a></li>
-                            <li><a href="privacy.html" class="text-purple-200/70 hover:text-white transition-colors">Privacy</a></li>
+                        <ul class="space-y-3 inline-block text-left md:block">
+                            <li><a href="index.html" class="text-purple-200/70 hover:text-white transition-colors block">Home</a></li>
+                            <li><a href="aboutus.html" class="text-purple-200/70 hover:text-white transition-colors block">About Us</a></li>
+                            <li><a href="contact.html" class="text-purple-200/70 hover:text-white transition-colors block">Contact</a></li>
+                            <li><a href="terms.html" class="text-purple-200/70 hover:text-white transition-colors block">Terms</a></li>
+                            <li><a href="privacy.html" class="text-purple-200/70 hover:text-white transition-colors block">Privacy</a></li>
                         </ul>
                     </div>
 
+                    <!-- Contact Info -->
                     <div class="md:col-span-4 text-center md:text-left">
                         <h3 class="text-lg font-bold text-white mb-6">Get in Touch</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-start gap-3">
-                                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white">
-                                    <i class="fas fa-map-marker-alt"></i>
+                        <!-- Wrapper to center the block on mobile but keep items left-aligned internally -->
+                        <div class="inline-block text-left w-full max-w-xs md:max-w-none">
+                            <div class="space-y-4">
+                                <!-- Location -->
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white shrink-0 mt-1">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-white font-medium mb-1">Location</p>
+                                        <p class="text-purple-200/70 text-sm leading-relaxed">Bokaro, Jharkhand, India</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p class="text-white font-medium mb-1">Location</p>
-                                    <p class="text-purple-200/70 text-sm">Bokaro, Jharkhand, India</p>
-                                </div>
-                            </div>
 
-                            <div class="flex items-start gap-3">
-                                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white">
-                                    <i class="fas fa-envelope"></i>
+                                <!-- Email -->
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white shrink-0 mt-1">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-white font-medium mb-1">Email</p>
+                                        <a href="mailto:info.myquro@gmail.com" class="text-purple-200/70 text-sm hover:text-white transition-colors">info.myquro@gmail.com</a>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p class="text-white font-medium mb-1">Email</p>
-                                    <a href="mailto:info.myquro@gmail.com" class="text-purple-200/70 text-sm hover:text-white">info.myquro@gmail.com</a>
-                                </div>
-                            </div>
 
-                            <div class="flex items-start gap-3">
-                                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white">
-                                    <i class="fas fa-phone-alt"></i>
-                                </div>
-                                <div>
-                                    <p class="text-white font-medium mb-1">Phone</p>
-                                    <a href="tel:+917061903429" class="text-purple-200/70 text-sm hover:text-white">+91 70619 03429</a>
+                                <!-- Phone -->
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white shrink-0 mt-1">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-white font-medium mb-1">Phone</p>
+                                        <a href="tel:+917061903429" class="text-purple-200/70 text-sm hover:text-white transition-colors">+91 70619 03429</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -794,9 +805,9 @@
                 </div>
 
                 <div class="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p class="text-purple-200/50 text-sm">&copy; 2025 MyQuro. All rights reserved.</p>
+                    <p class="text-purple-200/50 text-sm text-center md:text-left">&copy; 2025 MyQuro. All rights reserved.</p>
                     <p class="text-purple-200/50 text-sm flex items-center gap-2">
-                         
+                        Made with <span class="text-[#D32F2F]">♥</span> in India
                     </p>
                 </div>
             </div>
@@ -831,6 +842,7 @@
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
+
                 if (entry.isIntersecting) {
                     entry.target.classList.add('reveal-active');
                     observer.unobserve(entry.target);
